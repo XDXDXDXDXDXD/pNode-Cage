@@ -15,6 +15,8 @@ mytimer:alarm(100, 1, function()
 		last_state = gpio.read(pin)
         if last_state == 1 then
             ws:send('{"act":"t","dev_id":"'.. config.device.name ..'"}')
+        else
+            ws:send('{"act":"x","dev_id":"'.. config.device.name ..'"}')
         end
     end
 end)
