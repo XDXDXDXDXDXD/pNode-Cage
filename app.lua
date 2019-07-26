@@ -1,6 +1,8 @@
+
 local config = require "config"
 local ws = websocket.createClient()
 local mytimer = tmr.create()
+local mysecondtimer = tmr.create()
 
 ws:connect(config.server.url)
 
@@ -19,4 +21,8 @@ mytimer:alarm(100, 1, function()
             ws:send('{"act":"x","dev_id":"'.. config.device.name ..'"}')
         end
     end
+end)
+
+mysecondtimer:alarm(800, 1, function()
+    ws:send('{"act":"heartbeats","dev_id":"'.. config.device.name ..'"}')
 end)
