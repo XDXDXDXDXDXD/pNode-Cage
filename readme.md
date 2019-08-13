@@ -16,7 +16,7 @@ esptool.py --port /dev/cu.usbserial-A50285BI --baud 115200 erase_flash
 Then, write firmware:
 
 ```
-esptool.py --port /dev/cu.usbserial-A50285BI --baud 115200 write_flash -fm dio 0x00000 nodemcu-firmware-float.bin
+esptool.py --port /dev/cu.usbserial-A50285BI --baud 115200 write_flash -fm dio 0x00000 ./bin/nodemcu-master-9-modules-2019-06-25-17-11-47-float.bin
 ```
 
 Note: In case firmware image was lost, use the following custom builds generator here: https://nodemcu-build.com/ with the following options: **file, gpio, http, node, sjson, tmr, uart, wifi**

@@ -3,6 +3,7 @@ local config = require "config"
 local ws = websocket.createClient()
 local mytimer = tmr.create()
 local mysecondtimer = tmr.create()
+local mythirdtimer = tmr.create()
 
 ws:connect(config.server.url)
 
@@ -25,4 +26,8 @@ end)
 
 mysecondtimer:alarm(800, 1, function()
     ws:send('{"act":"heartbeats","dev_id":"'.. config.device.name ..'"}')
+end)
+
+mythirdtimer:alarm(3600000, 1, function()
+    node.restart();
 end)
